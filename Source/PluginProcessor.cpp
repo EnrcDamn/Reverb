@@ -138,7 +138,7 @@ void ReverbTest1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-
+    
 
     if (totalNumInputChannels == 1 && totalNumOutputChannels == 2)
     {
@@ -154,14 +154,20 @@ void ReverbTest1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
             buffer.getWritePointer(0), buffer.getWritePointer(1),
             buffer.getNumSamples());
 
-        delay.initDelay(500, getSampleRate());
-        delay.next(buffer.getWritePointer(0));
-        delay.getOutput();
+        int numSamples = buffer.getNumSamples();
+        
+        for (size_t i = 0; i < numSamples; ++i)
+        {
+            delay.initDelay(500, getSampleRate());
+            delay.next(buffer.getWritePointer(0)[i]);
+            delay.getOutput();
+        }
     }
     else
     {
         jassertfalse; // channel layout not supported
     }
+
 }
 
 //==============================================================================

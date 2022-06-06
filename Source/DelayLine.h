@@ -47,11 +47,11 @@ public:
 			delayInSamples = maxDelayTime;
 	}
 
-	void next(float* input)
+	void next(float input)
 	{
-		delay[pos] = input[pos];
+		delay[pos] = input;
 		pos = (pos + 1) % (delayInSamples);
-		//DBG(input[pos]);
+		DBG("Input: " << input);
 		DBG("Current position: " << juce::String(pos));
 	}
 
@@ -63,7 +63,7 @@ public:
 			readPos -= delayInSamples;
 
 		DBG("Delayed position: " << juce::String(readPos));
-		DBG(delay[readPos]);
+		DBG("Output: " << delay[readPos]);
 		return delay[readPos];
 	}
 
