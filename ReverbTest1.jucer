@@ -5,8 +5,9 @@
   <MAINGROUP id="EzUfxD" name="ReverbTest1">
     <GROUP id="{A00BE944-C997-D439-9726-43CB2745843A}" name="Source">
       <FILE id="TlQBfg" name="DelayLine.h" compile="0" resource="0" file="Source/DelayLine.h"/>
-      <FILE id="tBoxt8" name="BlockStep.cpp" compile="1" resource="0" file="Source/BlockStep.cpp"/>
-      <FILE id="HClQmC" name="BlockStep.h" compile="0" resource="0" file="Source/BlockStep.h"/>
+      <FILE id="tBoxt8" name="DiffusionStep.cpp" compile="1" resource="0"
+            file="Source/DiffusionStep.cpp"/>
+      <FILE id="HClQmC" name="DiffusionStep.h" compile="0" resource="0" file="Source/DiffusionStep.h"/>
       <FILE id="fTAkoa" name="ReverbBlock.cpp" compile="1" resource="0" file="Source/ReverbBlock.cpp"/>
       <FILE id="O704AG" name="ReverbBlock.h" compile="0" resource="0" file="Source/ReverbBlock.h"/>
       <FILE id="DbnFug" name="MyReverb.cpp" compile="1" resource="0" file="Source/MyReverb.cpp"/>
