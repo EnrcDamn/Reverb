@@ -51,19 +51,19 @@ public:
 	{
 		delay[pos] = input;
 		pos = (pos + 1) % (delayInSamples);
-		DBG("Input: " << input);
-		DBG("Current position: " << juce::String(pos));
+		//DBG("Input: " << juce::String(input));
+		//DBG("Current position: " << juce::String(pos));
 	}
 
 	float getOutput()
 	{
-		int readPos = pos + delayInSamples;
+		int readPos = pos - delayInSamples;
 
-		if (readPos >= delayInSamples)
-			readPos -= delayInSamples;
+		if (readPos < 0)
+			readPos += delayInSamples;
 
-		DBG("Delayed position: " << juce::String(readPos));
-		DBG("Output: " << delay[readPos]);
+		//DBG("Delayed position: " << juce::String(readPos));
+		//DBG("Output: " << delay[readPos]);
 		return delay[readPos];
 	}
 

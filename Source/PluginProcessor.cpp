@@ -97,6 +97,8 @@ void ReverbTest1AudioProcessor::prepareToPlay (double sampleRate, int samplesPer
     // initialisation that you need..
     juce::ignoreUnused(samplesPerBlock);
     reverb.setSampleRate(sampleRate);
+
+    delay.initDelay(90000, getSampleRate());
 }
 
 void ReverbTest1AudioProcessor::releaseResources()
@@ -154,14 +156,18 @@ void ReverbTest1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
             buffer.getWritePointer(0), buffer.getWritePointer(1),
             buffer.getNumSamples());
 
+        // TODO: remove delay test
+        // =======================================
+
         int numSamples = buffer.getNumSamples();
-        
+
         for (size_t i = 0; i < numSamples; ++i)
-        {
-            delay.initDelay(500, getSampleRate());
+        {   
             delay.next(buffer.getWritePointer(0)[i]);
             delay.getOutput();
         }
+
+        // =======================================
     }
     else
     {
